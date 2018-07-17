@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:BuzzBandung.Controls"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             x:Class="BuzzBandung.Views.Main.Controls.BottomBarItemTemplate">
+    <ContentView.Content>
+        <StackLayout Spacing="4">
+            <controls:ExtendedFrame Padding="3" CornerRadius="31" 
+                                    BorderColor="#c9503b" BackgroundColor="White"
+                                    HasShadow="true"
+                                    ShadowOffsetX="0" ShadowOffsetY="16"
+                                    ShadowRadius="14" ShadowOpacity=".2">
+                <controls:ExtendedFrame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ClickCommand}"/>
+                </controls:ExtendedFrame.GestureRecognizers>
+                <ffimageloading:CachedImage Source="{Binding ImageUrl}" HeightRequest="56" WidthRequest="56">
+                    <ffimageloading:CachedImage.Transformations>
+                        <fftransformations:CircleTransformation />
+                    </ffimageloading:CachedImage.Transformations>
+                </ffimageloading:CachedImage>
+            </controls:ExtendedFrame>
+            <Label Text="{Binding Text}" FontSize="Small" VerticalOptions="Center" HorizontalOptions="Center" />
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

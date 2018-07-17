@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="BuzzBandung.Views.Main.MainView"
+             xmlns:controls="clr-namespace:BuzzBandung.Controls"
+             xmlns:viewControls="clr-namespace:BuzzBandung.Views.Main.Controls"
+             xmlns:ffimage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:maps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <maps:Map x:Name="map" Grid.RowSpan="3" 
+                      InitialCameraUpdate="{Binding InitialCameraUpdate}"/>
+<!--HACK:Rg.Plugins.Popup: Bug when android with LayoutFullscreen using it with googlemap has some whitespace-->
+            <ContentView x:Name="hackView">
+                <OnPlatform x:TypeArguments="View">
+                    <OnPlatform.Android>
+                        <BoxView />
+                    </OnPlatform.Android>
+                </OnPlatform>
+            </ContentView>
+<!--EndOf:HACK-->
+           <!-- <controls:ExtendedFrame Padding="4"
+                                    CornerRadius="0" HasShadow="true"
+                                    ShadowOffsetX="0" ShadowOffsetY="16"
+                                    ShadowRadius="14" ShadowOpacity=".2">
+                <controls:ExtendedFrame.BackgroundColor>
+                    <OnPlatform x:TypeArguments="Color" iOS="Transparent" />
+                </controls:ExtendedFrame.BackgroundColor>
+                <controls:ExtendedFrame.Margin>
+                    <OnPlatform x:TypeArguments="Thickness" Android="16,40,16,16" iOS="16,36,16,16" />
+                </controls:ExtendedFrame.Margin>
+                <controls:ExtendedSearchBar IconDisplay="Right" BackgroundColor="White"
+                                            Placeholder="Buzz Bandung" />
+            </controls:ExtendedFrame>-->
+            <viewControls:BottomBar Grid.Row="2" ItemSource="{Binding Stories}" Padding="16" Spacing="16"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
