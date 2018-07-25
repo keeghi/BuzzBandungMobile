@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Windows.Input;
 using BuzzBandung.Common.Base;
+using Xamarin.Forms;
 
 namespace BuzzBandung.Views.Main.Popups
 {
@@ -8,5 +10,7 @@ namespace BuzzBandung.Views.Main.Popups
         public DetailPopupModel()
         {
         }
+
+        public ICommand CloseCommand => new Command(async () => await NavigationService.PopPopupAsync());
     }
 }

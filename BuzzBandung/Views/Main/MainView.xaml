@@ -12,6 +12,7 @@
                 <RowDefinition Height="1"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
             <maps:Map x:Name="map" Grid.RowSpan="3" 
                       InitialCameraUpdate="{Binding InitialCameraUpdate}"/>
@@ -37,7 +38,17 @@
                 <controls:ExtendedSearchBar IconDisplay="Right" BackgroundColor="White"
                                             Placeholder="Buzz Bandung" />
             </controls:ExtendedFrame>-->
-            <viewControls:BottomBar Grid.Row="2" ItemSource="{Binding Stories}" Padding="16" Spacing="16"/>
+            <StackLayout Grid.Row="2" Padding="16"
+                         Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <Image Source="Icon" BackgroundColor="Black"  HorizontalOptions="EndAndExpand"
+                       WidthRequest="32" HeightRequest="32">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="MyLocationButton_Clicked" />
+                    </Image.GestureRecognizers>
+                </Image>
+            </StackLayout>
+            <viewControls:BottomBar Grid.Row="3"
+                                    ItemSource="{Binding Stories}" Padding="16" Spacing="16"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

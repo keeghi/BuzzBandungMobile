@@ -41,6 +41,9 @@ namespace BuzzBandung.Common.Navigation
 
         public Task NavigateBackAsync()
         {
+            if (CurrentApplication.MainPage is NavigationPage navigation)
+                return navigation.PopAsync();
+
             return Task.CompletedTask;
         }
 

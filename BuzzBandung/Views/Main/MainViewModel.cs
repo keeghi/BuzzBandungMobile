@@ -1,5 +1,4 @@
 ﻿using System.Collections.ObjectModel;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using BuzzBandung.Common.Base;
 using BuzzBandung.Extensions;
@@ -10,11 +9,13 @@ namespace BuzzBandung.Views.Main
 {
     public class MainViewModel : ViewModelBase
     {
+        private CameraUpdate _initialCameraUpdate;
+        private ObservableCollection<BottomBarItem> _stories = new ObservableCollection<BottomBarItem>();
+
         public MainViewModel()
         {
         }
 
-        private CameraUpdate _initialCameraUpdate;
         public CameraUpdate InitialCameraUpdate
         {
             get => _initialCameraUpdate;
@@ -25,7 +26,6 @@ namespace BuzzBandung.Views.Main
             }
         }
 
-        private ObservableCollection<BottomBarItem> _stories = new ObservableCollection<BottomBarItem>();
         public ObservableCollection<BottomBarItem> Stories
         {
             get => _stories;
@@ -38,7 +38,7 @@ namespace BuzzBandung.Views.Main
 
         public override Task InitializeAsync(object navigationData)
         {
-            InitialCameraUpdate = CameraUpdateFactory.NewPositionZoom(App.Settings.CurrentPosition.ToGoogleMaps(), Configuration.GoogleMaps.DefaultZoomLevel);
+            InitialCameraUpdate = CameraUpdateFactory.NewPositionZoom(App.Settings.CurrentPosition.ToGoogleMapsPosition(), Configuration.GoogleMaps.DefaultZoomLevel);
 
             Stories = new ObservableCollection<BottomBarItem>
             {

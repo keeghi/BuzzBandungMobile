@@ -1,4 +1,5 @@
 ﻿using Xamarin.Forms;
+using BuzzBandung.Extensions;
 
 namespace BuzzBandung.Views.Main
 {
@@ -10,9 +11,14 @@ namespace BuzzBandung.Views.Main
 
             map.UiSettings.CompassEnabled = false;
             map.UiSettings.ZoomControlsEnabled = false;
-            map.UiSettings.ZoomGesturesEnabled = false;
+            map.UiSettings.ZoomGesturesEnabled = true;
             //map.UiSettings.MyLocationButtonEnabled = true;
             map.MyLocationEnabled = true;
+        }
+
+        void MyLocationButton_Clicked(object sender, System.EventArgs e)
+        {
+            map.MoveToRegion(App.Settings.CurrentPosition.ToGoogleMapsMapSpan());
         }
     }
 }

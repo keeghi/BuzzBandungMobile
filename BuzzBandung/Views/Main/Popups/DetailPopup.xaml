@@ -12,7 +12,7 @@
     </pages:PopupPage.Animation>
     <pages:PopupPage.Content>
         <StackLayout Spacing="0">
-            <Button Clicked="CloseButton_Clicked" Text="X" 
+            <Button Command="{Binding CloseCommand}" Text="X" 
                     WidthRequest="40" HeightRequest="40" 
                     Margin="16"
                     BorderRadius="20" HorizontalOptions="Start" />

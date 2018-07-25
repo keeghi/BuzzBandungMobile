@@ -3,12 +3,20 @@ using System.Threading.Tasks;
 using BuzzBandung.Common.Base;
 using Rg.Plugins.Popup.Extensions;
 using Rg.Plugins.Popup.Pages;
-using Xamarin.Forms;
+using Rg.Plugins.Popup.Services;
 
 namespace BuzzBandung.Common.Navigation
 {
     public partial class NavigationService : INavigationService
     {
+        public Task PopPopupAsync()
+        {
+            if (PopupNavigation.Instance.PopupStack.Count > 0)
+                return CurrentApplication.MainPage.Navigation.PopPopupAsync();
+
+            return Task.CompletedTask;
+        }
+
         public Task NavigateToPopupAsync<TViewModel>(bool animate) where TViewModel : ViewModelBase
         {
             return NavigateToPopupAsync<TViewModel>(null, animate);

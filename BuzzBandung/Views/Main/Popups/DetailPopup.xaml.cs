@@ -16,10 +16,5 @@ namespace BuzzBandung.Views.Main.Popups
                 "c"
             };
         }
-
-        void CloseButton_Clicked(object sender, System.EventArgs e)
-        {
-            this.Navigation.PopPopupAsync();
-        }
     }
 }

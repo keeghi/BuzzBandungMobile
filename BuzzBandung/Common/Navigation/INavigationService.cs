@@ -21,5 +21,7 @@ namespace BuzzBandung.Common.Navigation
         Task NavigateToPopupAsync<TViewModel>(bool animate) where TViewModel : ViewModelBase;
 
         Task NavigateToPopupAsync<TViewModel>(object parameter, bool animate) where TViewModel : ViewModelBase;
+
+        Task PopPopupAsync();
     }
 }
